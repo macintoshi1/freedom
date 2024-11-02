@@ -1,0 +1,435 @@
+/* ベーススタイル */
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #333;
+}
+
+.wireframe {
+    max-width: 100%;
+    margin: 0 auto;
+    background: whitesmoke;
+    padding: 0;
+    color: #666;
+    z-index: 1;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* セクション共通 */
+.section {
+    max-width: 640px;
+    border: 3px solid #888;
+    margin: 20px auto;
+    padding: 20px;
+    position: relative;
+}
+
+/*  container共通 */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+.section::before {
+    content: attr(data-section);
+    position: absolute;
+    top: -12px;
+    left: 10px;
+    background: whitesmoke;
+    padding: 0 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* ナビゲーション */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.logo-pc {
+    width: 400px;
+    height: 30px;
+    margin-top: 4px;
+}
+
+.logo-sp {
+    display: none;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 16px;
+    color: #999; /* 文字自体は透明に */
+    padding-right: 40px;
+}
+
+.nav-menu div {
+}
+
+.menu-button {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 36px;
+    cursor: pointer;
+    color: #999;
+    position: fixed;
+    top: 10px;
+    right: 20px;
+}
+
+/* ヒーローセクション */
+.hero {
+    position: relative;
+    z-index: 0;
+    width: 100%;
+    height: 120vh;
+    min-height: 800px;  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url("./images/IMG_9316_03.jpeg") center/cover;
+    background-attachment: fixed;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* コンテンツを中央に配置 */
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    gap: 20px;
+    transform: translateY(0vh); /* 少し上に移動して中央を調整 */
+}
+
+.hero .logo {
+    position: relative;
+    top: 22vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero .logo img {
+    width: 600px;
+    height: auto;
+    opacity: 0; /* 初期状態で非表示 */
+    animation: fadeInScale 4s ease-in forwards; /* 4秒でフェードインとスケールイン */
+}
+
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    80% {
+        opacity: 0.5;
+        transform: scale(0.98);
+    }
+    90% {
+        opacity: 0.6;
+        transform: scale(0.99);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* メッセージのスタイル */
+.hero p {
+    position: relative;
+    top: -140px;
+    font-size: 1.5em;
+    margin-bottom: 30px;
+    font-weight: 400;
+    font-family: 'Bebas Neue', sans-serif; /* 力強く前衛的なのフォントに変更 */
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 0.1em;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.hero-button {
+    padding: 15px 40px;
+    font-size: 1.2em;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid white;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    margin-top: 480px;
+}
+
+.hero-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 28vh;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: slide-fade 1.6s infinite;
+    font-size: 36px;
+    color: rgba(85, 255, 254, 0.8);
+}
+
+@keyframes slide-fade {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(10px);
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(10px);
+    }
+}
+
+/* グリッドレイアウト */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    align-items: center;
+}
+
+.artist-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+/* カード */
+.card {
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+
+.artist-card {
+    width: 132px;
+    height: 132px;
+    /* aspect-ratio: 1; */
+    background: #eee;
+    margin: 10px auto;
+}
+
+.camp-image {
+    aspect-ratio: 16/9;
+    background: #eee;
+}
+
+/* フッター */
+.footer {
+    text-align: center;
+    padding: 20px;
+    border-top: 2px solid #333;
+    margin-top: 40px;
+}
+
+.footer-grid {
+    display: flex;
+    justify-content: space-evenly;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* タブレット用メディアクエリ */
+@media (max-width: 1600px) {
+    .logo-pc {
+        display: none;
+    }
+
+    .logo-sp {
+        display: block;
+        width: 160px;
+        height: auto;
+        margin-top: 4px;
+        margin-left: 8px;
+    }
+    
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        /* z-index: 100; */
+    }
+
+    .menu-button {
+        display: block;
+        color: #999; /* 文字自体は透明に */
+        /* padding-right: 40px; */
+    }
+
+    .grid, .artist-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .hero {
+        height: 400px;
+        z-index: 0;
+    }
+    
+    .hero h1 {
+        font-size: 3em;
+    }
+
+    .hero p {
+        font-size: 1.4em;
+    }
+    
+    .wireframe {
+        z-index: 1;
+    }
+}
+
+@media (max-width: 1096px) {
+    .logo-sp {
+        display: none;
+    }
+}
+
+
+@media (min-width: 901px) {
+    .artist-grid {
+        grid-template-columns: repeat(4, 1fr); /* 横一列で4つ並べる */
+    }
+}
+
+@media (max-width: 900px) {
+    .section {
+        max-width: 320px;
+    }
+
+    .grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .artist-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .grid > div,
+    .artist-grid > div {
+        width: 100%;
+    }
+
+    .artist-grid > .artist-card {
+        width: 132px;
+        height: 132px;
+        margin-bottom: 20px;
+    }
+
+    .card {
+        max-width: 240px;
+    }
+
+    .hero .logo img {
+        width: 480px;
+        height: 480px;
+    }
+
+    .footer-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+}
+
+
+/* モバイル用メディアクエリ */
+@media (max-width: 560px) {
+    .nav {
+        position: relative;
+        z-index: 10;
+    }
+
+    .nav img {
+        background: none;
+    }
+
+    .hero .logo img {
+        display: block;
+        margin: 400 auto;
+        width: 400px;
+        height: 400px;
+    }
+    
+    .nav-menu.active {
+        display: flex;
+    }
+    
+    .menu-button {
+        display: block;
+    }
+    
+    .grid, .footer-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero {
+        height: 300px;
+        /* padding: 20px; */
+        z-index: 0;
+    }
+    
+    .hero h1 {
+        font-size: 2em;
+    }
+
+    .hero p {
+        font-size: 1.2em;
+    }
+    
+    .hero-button {
+        padding: 12px 30px;
+    }
+    
+    .section {
+        padding: 10px;
+    }
+    
+    .wireframe {
+        /* padding: 5px; */
+    }
+}
